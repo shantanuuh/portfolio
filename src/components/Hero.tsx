@@ -8,9 +8,37 @@ import { cn } from "@/lib/utils";
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden">
-      {/* Background Blobs */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse-slow -z-10" />
-      <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[150px] animate-pulse-slow -z-10" />
+      {/* Full-section floating glassmorphism orbs */}
+      {/* Large orb - top left */}
+      <motion.div
+        animate={{ rotate: 360, x: [-30, 30, -30], y: [-20, 20, -20] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+        className="absolute top-[5%] left-[5%] w-[220px] h-[220px] rounded-full border border-white/10 bg-primary/5 backdrop-blur-xl -z-10"
+      />
+      {/* Medium orb - top right */}
+      <motion.div
+        animate={{ rotate: -360, x: [20, -20, 20], y: [20, -20, 20] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+        className="absolute top-[10%] right-[8%] w-[140px] h-[140px] rounded-full border border-white/15 bg-secondary/5 backdrop-blur-lg -z-10"
+      />
+      {/* Small twinkling orb - center */}
+      <motion.div
+        animate={{ scale: [1, 1.4, 1], opacity: [0.3, 0.8, 0.3] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[45%] left-[48%] w-[70px] h-[70px] rounded-full border border-white/25 bg-white/10 backdrop-blur-md shadow-[0_0_25px_rgba(255,255,255,0.15)] -z-10"
+      />
+      {/* Large orb - bottom right */}
+      <motion.div
+        animate={{ rotate: 360, x: [25, -25, 25], y: [-20, 20, -20] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        className="absolute bottom-[5%] right-[5%] w-[200px] h-[200px] rounded-full border border-white/10 bg-primary/5 backdrop-blur-xl -z-10"
+      />
+      {/* Small orb - bottom left */}
+      <motion.div
+        animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.7, 0.2] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+        className="absolute bottom-[15%] left-[10%] w-[100px] h-[100px] rounded-full border border-white/20 bg-white/5 backdrop-blur-md -z-10"
+      />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
         {/* flex-col-reverse: Text Top, Image Bottom (Mobile) | md:flex-row: Image Left, Text Right (Desktop) */}
@@ -23,28 +51,7 @@ export function Hero() {
             transition={{ delay: 0.5, duration: 1, ease: "easeOut" }}
             className="relative flex justify-center lg:justify-start w-full lg:flex-1"
           >
-            {/* Dynamic Twinkling Aura Cluster */}
-            <div className="absolute top-1/2 left-1/2 lg:left-[240px] -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10 hidden md:block">
-              {/* Core Pulse */}
-              <motion.div 
-                animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.7, 0.3], x: [-15, 15, -15], y: [-15, 15, -15] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-0 bg-primary/40 blur-[80px] rounded-full"
-              />
-              {/* Secondary Flow */}
-              <motion.div 
-                animate={{ scale: [1.15, 1, 1.15], opacity: [0.2, 0.6, 0.2], x: [15, -15, 15], y: [15, -15, 15] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-0 bg-primary/30 blur-[90px] rounded-full mix-blend-screen"
-              />
-              {/* Fast Twinkle */}
-              <motion.div 
-                animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.5, 0.1] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-white/20 blur-[60px] rounded-full mix-blend-overlay"
-              />
-            </div>
-            
+
             <div className="relative w-[240px] h-[240px] md:w-[360px] md:h-[360px] lg:w-[480px] lg:h-[480px]">
               <div className="relative w-full h-full overflow-hidden rounded-t-2xl rounded-bl-[125px] rounded-br-[90px] md:rounded-bl-[200px] md:rounded-br-[140px] lg:rounded-bl-[300px] lg:rounded-br-[160px]">
                 <Image
