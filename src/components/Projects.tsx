@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Bot, Database, MessageSquare } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
+import TiltedCard from "@/components/TiltedCard";
 
 const projects = [
   {
@@ -70,40 +71,41 @@ export function Projects() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="glass-card p-8 group"
-            >
-              <div className="w-12 h-12 flex items-center justify-start mb-6 group-hover:scale-110 transition-transform">
-                {project.icon}
-              </div>
-              <h3 className="text-xl font-bold mb-3">{project.title}</h3>
-              <p className="text-foreground/60 mb-6 text-sm leading-relaxed">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-3 mb-8">
-                {project.tech.map((t) => (
-                  <div key={t.name} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-foreground/5 border border-foreground/10 hover:border-primary/30 transition-colors">
-                    <img src={t.icon} alt={t.name} className="w-4 h-4 object-contain dark:brightness-200 dark:contrast-200" />
-                    <span className="text-foreground text-[10px] font-bold uppercase tracking-wider">
-                      {t.name}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <div className="flex items-center gap-4 mt-auto">
-                <a href={project.link} className="p-2 rounded-full hover:bg-primary/10 transition-colors">
-                  <Github size={18} />
-                </a>
-                <a href={project.link} className="p-2 rounded-full hover:bg-primary/10 transition-colors">
-                  <ExternalLink size={18} />
-                </a>
-              </div>
-            </motion.div>
+            <TiltedCard key={project.title} rotateAmplitude={8}>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="glass-card p-8 group h-full"
+              >
+                <div className="w-12 h-12 flex items-center justify-start mb-6 group-hover:scale-110 transition-transform">
+                  {project.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-3">{project.title}</h3>
+                <p className="text-foreground/60 mb-6 text-sm leading-relaxed">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-3 mb-8">
+                  {project.tech.map((t) => (
+                    <div key={t.name} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-foreground/5 border border-foreground/10 hover:border-primary/30 transition-colors">
+                      <img src={t.icon} alt={t.name} className="w-4 h-4 object-contain dark:brightness-200 dark:contrast-200" />
+                      <span className="text-foreground text-[10px] font-bold uppercase tracking-wider">
+                        {t.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex items-center gap-4 mt-auto">
+                  <a href={project.link} className="p-2 rounded-full hover:bg-primary/10 transition-colors">
+                    <Github size={18} />
+                  </a>
+                  <a href={project.link} className="p-2 rounded-full hover:bg-primary/10 transition-colors">
+                    <ExternalLink size={18} />
+                  </a>
+                </div>
+              </motion.div>
+            </TiltedCard>
           ))}
         </div>
       </div>

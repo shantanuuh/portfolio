@@ -3,41 +3,18 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, Github, Linkedin } from "lucide-react";
-import { cn } from "@/lib/utils";
+import Aurora from "@/components/Aurora";
+import SplitText from "@/components/SplitText";
 
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden">
-      {/* Full-section floating glassmorphism orbs */}
-      {/* Large orb - top left */}
-      <motion.div
-        animate={{ rotate: 360, x: [-30, 30, -30], y: [-20, 20, -20] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-        className="absolute top-[5%] left-[5%] w-[220px] h-[220px] rounded-full border border-white/10 bg-primary/5 backdrop-blur-xl -z-10"
-      />
-      {/* Medium orb - top right */}
-      <motion.div
-        animate={{ rotate: -360, x: [20, -20, 20], y: [20, -20, 20] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-        className="absolute top-[10%] right-[8%] w-[140px] h-[140px] rounded-full border border-white/15 bg-secondary/5 backdrop-blur-lg -z-10"
-      />
-      {/* Small twinkling orb - center */}
-      <motion.div
-        animate={{ scale: [1, 1.4, 1], opacity: [0.3, 0.8, 0.3] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[45%] left-[48%] w-[70px] h-[70px] rounded-full border border-white/25 bg-white/10 backdrop-blur-md shadow-[0_0_25px_rgba(255,255,255,0.15)] -z-10"
-      />
-      {/* Large orb - bottom right */}
-      <motion.div
-        animate={{ rotate: 360, x: [25, -25, 25], y: [-20, 20, -20] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="absolute bottom-[5%] right-[5%] w-[200px] h-[200px] rounded-full border border-white/10 bg-primary/5 backdrop-blur-xl -z-10"
-      />
-      {/* Small orb - bottom left */}
-      <motion.div
-        animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.7, 0.2] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-        className="absolute bottom-[15%] left-[10%] w-[100px] h-[100px] rounded-full border border-white/20 bg-white/5 backdrop-blur-md -z-10"
+      {/* Aurora WebGL Background */}
+      <Aurora
+        colorStops={['#007AFF', '#5856D6', '#34aadc']}
+        amplitude={1.2}
+        blend={0.6}
+        speed={0.8}
       />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
@@ -86,12 +63,15 @@ export function Hero() {
             </motion.span>
             
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
               className="mt-6 md:mt-8 text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-extrabold tracking-tight leading-[1.1] break-words"
             >
-              Shantanu <span className="text-gradient">Harkulkar</span>
+              <SplitText text="Shantanu " delay={0.04} />
+              <span className="text-gradient">
+                <SplitText text="Harkulkar" delay={0.04} />
+              </span>
             </motion.h1>
             
             <motion.p
