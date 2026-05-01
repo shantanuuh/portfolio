@@ -115,7 +115,7 @@ export default function Aurora({
   blend = 0.5,
   speed = 1.0,
 }: AuroraProps) {
-  const propsRef = useRef({ colorStops, amplitude, blend, speed });
+  const propsRef = useRef<AuroraProps>({ colorStops, amplitude, blend, speed });
   propsRef.current = { colorStops, amplitude, blend, speed };
 
   const ctnDom = useRef<HTMLDivElement>(null);
