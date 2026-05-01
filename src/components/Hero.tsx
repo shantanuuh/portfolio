@@ -7,10 +7,7 @@ import { ArrowRight, Github, Linkedin } from "lucide-react";
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden">
-
-
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-        {/* flex-col-reverse: Text Top, Image Bottom (Mobile) | md:flex-row: Image Left, Text Right (Desktop) */}
         <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 md:gap-20 py-10 md:py-0">
           
           {/* Image Section */}
@@ -20,27 +17,9 @@ export function Hero() {
             transition={{ delay: 0.5, duration: 1, ease: "easeOut" }}
             className="relative flex justify-center lg:justify-start w-full lg:flex-1"
           >
-
             <div className="relative w-[240px] h-[240px] md:w-[360px] md:h-[360px] lg:w-[480px] lg:h-[480px]">
-
-              {/* Twinkling Blue Aura — Layer 1: slow drift */}
-              <motion.div
-                animate={{ opacity: [0.15, 0.45, 0.2, 0.5, 0.15], x: [-18, 18, -10, 20, -18], y: [-12, 14, -18, 8, -12] }}
-                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-[-10%] rounded-full bg-primary/30 blur-[60px] -z-10"
-              />
-              {/* Twinkling Blue Aura — Layer 2: counter drift */}
-              <motion.div
-                animate={{ opacity: [0.1, 0.35, 0.15, 0.4, 0.1], x: [14, -14, 10, -18, 14], y: [10, -16, 12, -8, 10] }}
-                transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                className="absolute inset-[-5%] rounded-full bg-blue-400/20 blur-[80px] -z-10"
-              />
-              {/* Twinkling Blue Aura — Layer 3: fast twinkle */}
-              <motion.div
-                animate={{ opacity: [0, 0.6, 0, 0.5, 0], scale: [0.8, 1.1, 0.9, 1.2, 0.8] }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute inset-[10%] rounded-full bg-sky-300/15 blur-[40px] -z-10"
-              />
+              
+              {/* Removed: Layer 1, 2, and 3 Aura animations */}
 
               <div className="relative w-full h-full overflow-hidden rounded-t-2xl rounded-bl-[125px] rounded-br-[90px] md:rounded-bl-[200px] md:rounded-br-[140px] lg:rounded-bl-[300px] lg:rounded-br-[160px]">
                 <Image
@@ -53,7 +32,7 @@ export function Hero() {
                 />
               </div>
 
-              {/* Bottom Base Shadow */}
+              {/* Bottom Base Shadow stays for depth */}
               <div className="absolute bottom-[-15px] left-1/2 -translate-x-1/2 w-[70%] h-[40px] bg-black/10 blur-2xl rounded-full z-0" />
             </div>
           </motion.div>
