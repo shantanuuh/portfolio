@@ -26,17 +26,18 @@ export function Hero() {
             {/* Twinkling Desktop Background Aura */}
             <motion.div 
               animate={{ 
-                scale: [1, 1.1, 1.05, 1.15, 1], 
-                opacity: [0.15, 0.4, 0.2, 0.45, 0.15],
-                x: [-15, 15, -15],
-                y: [-10, 10, -10]
+                scale: [1, 1.2, 1.1, 1.3, 1], 
+                opacity: [0.4, 0.7, 0.5, 0.8, 0.4],
+                x: [-20, 20, -20],
+                y: [-15, 15, -15],
+                rotate: [0, 90, 180, 270, 360]
               }}
               transition={{ 
-                duration: 6, 
+                duration: 10, 
                 repeat: Infinity, 
-                ease: "easeInOut" 
+                ease: "linear" 
               }}
-              className="absolute top-1/2 left-1/2 lg:left-[240px] -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/20 blur-[120px] rounded-full -z-10 hidden md:block" 
+              className="absolute top-1/2 left-1/2 lg:left-[240px] -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/40 blur-[100px] rounded-[40%] -z-10 hidden md:block" 
             />
             
             <div className="relative w-[240px] h-[240px] md:w-[360px] md:h-[360px] lg:w-[480px] lg:h-[480px]">
