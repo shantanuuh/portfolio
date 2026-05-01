@@ -1,8 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useAnimationFrame } from "framer-motion";
-import { Cpu, Code2, Globe, Sparkles, Terminal, Layers } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Code2, Sparkles, Terminal } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const skills = [

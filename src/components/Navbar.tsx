@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Moon, Sun, Menu, X } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Menu, X } from "lucide-react";
+
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+
 
 const navLinks = [
   { name: "About", href: "#about" },
@@ -17,7 +17,7 @@ const navLinks = [
 
 export function Navbar() {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => setMounted(true), []);

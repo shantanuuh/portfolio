@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
-import TiltedCard from "@/components/TiltedCard";
 
 const projects = [
   {
@@ -71,8 +70,8 @@ export function Projects() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <TiltedCard key={project.title} rotateAmplitude={8}>
               <motion.div
+                key={project.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -105,7 +104,6 @@ export function Projects() {
                   </a>
                 </div>
               </motion.div>
-            </TiltedCard>
           ))}
         </div>
       </div>

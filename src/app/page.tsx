@@ -5,12 +5,12 @@ import { Projects } from "@/components/Projects";
 import { Experience } from "@/components/Experience";
 import { Skills } from "@/components/Skills";
 import { Contact } from "@/components/Contact";
-import { FlowLines } from "@/components/FlowLines";
+
 
 export default function Home() {
   return (
     <main className="min-h-screen relative">
-      <FlowLines />
+
       <Navbar />
       <Hero />
 
