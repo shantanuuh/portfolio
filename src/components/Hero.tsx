@@ -3,19 +3,11 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, Github, Linkedin } from "lucide-react";
-import Aurora from "@/components/Aurora";
-import SplitText from "@/components/SplitText";
 
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden">
-      {/* Aurora WebGL Background */}
-      <Aurora
-        colorStops={['#007AFF', '#5856D6', '#34aadc']}
-        amplitude={1.2}
-        blend={0.6}
-        speed={0.8}
-      />
+
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
         {/* flex-col-reverse: Text Top, Image Bottom (Mobile) | md:flex-row: Image Left, Text Right (Desktop) */}
@@ -30,6 +22,26 @@ export function Hero() {
           >
 
             <div className="relative w-[240px] h-[240px] md:w-[360px] md:h-[360px] lg:w-[480px] lg:h-[480px]">
+
+              {/* Twinkling Blue Aura — Layer 1: slow drift */}
+              <motion.div
+                animate={{ opacity: [0.15, 0.45, 0.2, 0.5, 0.15], x: [-18, 18, -10, 20, -18], y: [-12, 14, -18, 8, -12] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-[-10%] rounded-full bg-primary/30 blur-[60px] -z-10"
+              />
+              {/* Twinkling Blue Aura — Layer 2: counter drift */}
+              <motion.div
+                animate={{ opacity: [0.1, 0.35, 0.15, 0.4, 0.1], x: [14, -14, 10, -18, 14], y: [10, -16, 12, -8, 10] }}
+                transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                className="absolute inset-[-5%] rounded-full bg-blue-400/20 blur-[80px] -z-10"
+              />
+              {/* Twinkling Blue Aura — Layer 3: fast twinkle */}
+              <motion.div
+                animate={{ opacity: [0, 0.6, 0, 0.5, 0], scale: [0.8, 1.1, 0.9, 1.2, 0.8] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="absolute inset-[10%] rounded-full bg-sky-300/15 blur-[40px] -z-10"
+              />
+
               <div className="relative w-full h-full overflow-hidden rounded-t-2xl rounded-bl-[125px] rounded-br-[90px] md:rounded-bl-[200px] md:rounded-br-[140px] lg:rounded-bl-[300px] lg:rounded-br-[160px]">
                 <Image
                   src="/me.png"
@@ -63,15 +75,12 @@ export function Hero() {
             </motion.span>
             
             <motion.h1
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
               className="mt-6 md:mt-8 text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-extrabold tracking-tight leading-[1.1] break-words"
             >
-              <SplitText text="Shantanu " delay={0.04} />
-              <span className="text-gradient">
-                <SplitText text="Harkulkar" delay={0.04} />
-              </span>
+              Shantanu <span className="text-gradient">Harkulkar</span>
             </motion.h1>
             
             <motion.p

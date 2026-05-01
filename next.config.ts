@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
       exclude: ['info'],
     },
   },
+  turbopack: {
+    root: __dirname,
+  },
 };
 
 export default nextConfig;
