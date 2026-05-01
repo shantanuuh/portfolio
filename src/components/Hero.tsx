@@ -23,22 +23,27 @@ export function Hero() {
             transition={{ delay: 0.5, duration: 1, ease: "easeOut" }}
             className="relative flex justify-center lg:justify-start w-full lg:flex-1"
           >
-            {/* Twinkling Desktop Background Aura */}
-            <motion.div 
-              animate={{ 
-                scale: [1, 1.2, 1.1, 1.3, 1], 
-                opacity: [0.4, 0.7, 0.5, 0.8, 0.4],
-                x: [-20, 20, -20],
-                y: [-15, 15, -15],
-                rotate: [0, 90, 180, 270, 360]
-              }}
-              transition={{ 
-                duration: 10, 
-                repeat: Infinity, 
-                ease: "linear" 
-              }}
-              className="absolute top-1/2 left-1/2 lg:left-[240px] -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/40 blur-[100px] rounded-[40%] -z-10 hidden md:block" 
-            />
+            {/* Dynamic Twinkling Aura Cluster */}
+            <div className="absolute top-1/2 left-1/2 lg:left-[240px] -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10 hidden md:block">
+              {/* Core Pulse */}
+              <motion.div 
+                animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.7, 0.3], x: [-15, 15, -15], y: [-15, 15, -15] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 bg-primary/40 blur-[80px] rounded-full"
+              />
+              {/* Secondary Flow */}
+              <motion.div 
+                animate={{ scale: [1.15, 1, 1.15], opacity: [0.2, 0.6, 0.2], x: [15, -15, 15], y: [15, -15, 15] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 bg-primary/30 blur-[90px] rounded-full mix-blend-screen"
+              />
+              {/* Fast Twinkle */}
+              <motion.div 
+                animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.5, 0.1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-white/20 blur-[60px] rounded-full mix-blend-overlay"
+              />
+            </div>
             
             <div className="relative w-[240px] h-[240px] md:w-[360px] md:h-[360px] lg:w-[480px] lg:h-[480px]">
               <div className="relative w-full h-full overflow-hidden rounded-t-2xl rounded-bl-[125px] rounded-br-[90px] md:rounded-bl-[200px] md:rounded-br-[140px] lg:rounded-bl-[300px] lg:rounded-br-[160px]">
