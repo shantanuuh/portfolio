@@ -1,11 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-
 import Link from "next/link";
-
 
 const navLinks = [
   { name: "About", href: "#about" },
@@ -16,13 +14,7 @@ const navLinks = [
 ];
 
 export function Navbar() {
-  const [mounted, setMounted] = useState(false);
-
   const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted) return null;
 
   return (
     <nav className="fixed top-0 w-full z-50 px-6 py-4">

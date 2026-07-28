@@ -91,6 +91,7 @@ export function Hero() {
                 <a
                   href="https://github.com/shantanuuh"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="p-3 md:p-4 glass rounded-full hover:bg-primary/5 transition-all hover:scale-110"
                 >
                   <Github size={20} />
@@ -98,6 +99,7 @@ export function Hero() {
                 <a
                   href="https://www.linkedin.com/in/shantanu-harkulkar-563b38269/"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="p-3 md:p-4 glass rounded-full hover:bg-primary/5 transition-all hover:scale-110"
                 >
                   <Linkedin size={20} />

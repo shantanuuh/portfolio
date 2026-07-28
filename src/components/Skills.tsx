@@ -63,7 +63,7 @@ export function Skills() {
     }
   }, []);
 
-  useAnimationFrame((time, delta) => {
+  useAnimationFrame((_time, delta) => {
     if (!width || isDragging) return; // Wait until width is calculated or if dragging
 
     // Determine movement based on frame time

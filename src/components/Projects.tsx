@@ -95,10 +95,22 @@ export function Projects() {
                   ))}
                 </div>
                 <div className="flex items-center gap-4 mt-auto">
-                  <a href={project.link} className="p-2 rounded-full hover:bg-primary/10 transition-colors">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`GitHub repository for ${project.title}`}
+                    className="p-2 rounded-full hover:bg-primary/10 transition-colors"
+                  >
                     <Github size={18} />
                   </a>
-                  <a href={project.link} className="p-2 rounded-full hover:bg-primary/10 transition-colors">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Live demo for ${project.title}`}
+                    className="p-2 rounded-full hover:bg-primary/10 transition-colors"
+                  >
                     <ExternalLink size={18} />
                   </a>
                 </div>

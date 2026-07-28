@@ -63,10 +63,22 @@ export function Contact() {
               </a>
 
               <div className="flex gap-4 mt-8">
-                <a href="https://linkedin.com/in/shantanu-harkulkar-563b38269/" className="p-4 glass rounded-2xl hover:text-primary transition-colors">
+                <a
+                  href="https://linkedin.com/in/shantanu-harkulkar-563b38269/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn Profile"
+                  className="p-4 glass rounded-2xl hover:text-primary transition-colors"
+                >
                   <Linkedin size={24} />
                 </a>
-                <a href="https://github.com/shantanuuh" className="p-4 glass rounded-2xl hover:text-primary transition-colors">
+                <a
+                  href="https://github.com/shantanuuh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub Profile"
+                  className="p-4 glass rounded-2xl hover:text-primary transition-colors"
+                >
                   <Github size={24} />
                 </a>
               </div>
