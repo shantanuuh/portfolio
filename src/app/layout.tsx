@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <body className={`${inter.className} bg-grid`} suppressHydrationWarning>
+      <body className={inter.className} suppressHydrationWarning>
 
         {children}
       </body>

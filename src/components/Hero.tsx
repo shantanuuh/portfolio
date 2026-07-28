@@ -18,9 +18,6 @@ export function Hero() {
             className="relative flex justify-center lg:justify-start w-full lg:flex-1"
           >
             <div className="relative w-[240px] h-[240px] md:w-[360px] md:h-[360px] lg:w-[480px] lg:h-[480px]">
-              
-              {/* Removed: Layer 1, 2, and 3 Aura animations */}
-
               <div className="relative w-full h-full overflow-hidden rounded-t-2xl rounded-bl-[125px] rounded-br-[90px] md:rounded-bl-[200px] md:rounded-br-[140px] lg:rounded-bl-[300px] lg:rounded-br-[160px]">
                 <Image
                   src="/me.png"
