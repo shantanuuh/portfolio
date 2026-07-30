@@ -9,7 +9,7 @@ const H = ({ children }: { children: React.ReactNode }) => (
 
 export function About() {
   return (
-    <section id="about" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-foreground/[0.02] border-y border-glass-border py-20">
+    <section id="about" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-foreground/[0.02] border-y border-glass-border py-25">
       <div className="max-w-4xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -22,11 +22,6 @@ export function About() {
             <User size={16} />
             <span>About Me</span>
           </div>
-
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
-            Bridging the gap between<br />
-            <span className="text-gradient">AI and Reality.</span>
-          </h2>
 
           <div className="space-y-6 mt-8 text-left max-w-3xl mx-auto">
             <p className="text-lg md:text-xl text-foreground/70 leading-relaxed">

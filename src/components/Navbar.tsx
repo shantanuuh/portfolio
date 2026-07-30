@@ -5,12 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
+// Added leading "/" to all section anchors so they work from any route
 const navLinks = [
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
-  { name: "Skills", href: "#skills" },
-  { name: "Contact", href: "#contact" },
+  { name: "About", href: "/#about" },
+  { name: "Projects", href: "/#projects" },
+  { name: "Experience", href: "/#experience" },
+  { name: "Skills", href: "/#skills" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 export function Navbar() {
@@ -20,7 +21,7 @@ export function Navbar() {
     <nav className="fixed top-0 w-full z-50 px-6 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between glass px-6 py-3 rounded-full">
         <Link href="/" className="text-xl font-bold tracking-tight text-gradient">
-          SH.
+          SH
         </Link>
 
         {/* Desktop Links */}

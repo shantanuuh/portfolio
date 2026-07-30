@@ -5,27 +5,21 @@ import { Projects } from "@/components/Projects";
 import { Experience } from "@/components/Experience";
 import { Skills } from "@/components/Skills";
 import { Contact } from "@/components/Contact";
-
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
     <main className="min-h-screen relative">
-
       <Navbar />
       <Hero />
-
-      <div className="space-y-12">
+      <div className="space">
         <About />
         <Projects />
         <Experience />
         <Skills />
         <Contact />
       </div>
-      <footer className="py-12 border-t border-glass-border">
-        <div className="max-w-7xl mx-auto px-6 text-center text-foreground/40 text-sm">
-          <p>© {new Date().getFullYear()} Shantanu Harkulkar. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }
