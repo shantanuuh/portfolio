@@ -1,0 +1,106 @@
+@import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
+
+
+:root {
+  --background: #f8fafc;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  --color-lightbg: #f8fafc;
+  --color-lightcard: #ffffff;
+  --color-lightborder: #e2e8f0;
+  --color-darkbg: #09090b;
+  --color-darkcard: #121214;
+  --color-darkborder: #27272a;
+}
+
+:root.dark {
+  --background: #09090b;
+  --foreground: #ededed;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Premium Apple Dynamic Island Styles & Transitions */
+.dynamic-island {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+.dark .dynamic-island {
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.island-item {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, color 0.2s ease;
+}
+.island-item:hover {
+    transform: scale(1.04);
+}
+
+/* Clean Steel Shine with Ultra-Subtle Airy Light Shimmer */
+@keyframes steelShineRotate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.steel-shine-inner-glow {
+    position: relative;
+    border-radius: 0.75rem;
+    background: linear-gradient(60deg, rgba(255,255,255,0.95), rgba(203, 213, 225, 0.5), rgba(254, 243, 199, 0.35), rgba(255,255,255,0.95));
+    background-size: 300% 300%;
+    animation: steelShineRotate 6s ease infinite;
+    padding: 1.5px;
+}
+
+.dark .steel-shine-inner-glow {
+    background: linear-gradient(60deg, rgba(255,255,255,0.35), rgba(148, 163, 184, 0.4), rgba(254, 243, 199, 0.25), rgba(255,255,255,0.35));
+    background-size: 300% 300%;
+}
+
+.steel-shine-content {
+    background-color: #ffffff;
+    border-radius: calc(0.75rem - 1.5px);
+    transition: background-color 0.3s ease;
+}
+.dark .steel-shine-content {
+    background-color: #161619;
+}
+
+/* Hover Badge Popups */
+.hover-badge-container {
+    position: relative;
+    display: inline-block;
+}
+.hover-badge-popup {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px) scale(0.95);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform-origin: bottom center;
+    translate: -50% 0;
+    z-index: 50;
+}
+.hover-badge-container:hover .hover-badge-popup {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1) translateX(-50%);
+    translate: 0 0;
+    pointer-events: auto;
+}
