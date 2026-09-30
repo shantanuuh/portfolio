@@ -2,41 +2,87 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { Home, Book, Notebook, Mail, Sun, Moon } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Home, Book, Notebook, Briefcase, Mail, Sun, Moon } from "lucide-react";
 import Link from "next/link";
-
-function Github(props: any) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-  );
-}
-
-function Linkedin(props: any) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-  );
-}
 
 export default function Navigation() {
   const { theme, setTheme, systemTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  // Precise scroll-position detection to prevent skipping small sections
+  useEffect(() => {
+    if (!isHomePage) {
+      setActiveSection("");
+      return;
+    }
+
+    const sectionIds = ["projects", "experience", "contact"];
+
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight / 2.5;
+
+      // When near top of the page, default to Home
+      if (window.scrollY < 180) {
+        setActiveSection("");
+        return;
+      }
+
+      // Check if user is scrolled near the bottom of the page (activates Contact)
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 50
+      ) {
+        setActiveSection("contact");
+        return;
+      }
+
+      // Find the current section under the focus line
+      let current = "";
+      for (const id of sectionIds) {
+        const element = document.getElementById(id);
+        if (element) {
+          const top = element.offsetTop;
+          const height = element.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            current = id;
+            break;
+          }
+        }
+      }
+
+      setActiveSection(current);
+    };
+
+    // Initial check on load
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isHomePage]);
+
   const currentTheme = theme === "system" ? systemTheme : theme;
+
+  const getHref = (href: string) => {
+    if (href.startsWith("#")) {
+      return isHomePage ? href : `/${href}`;
+    }
+    return href;
+  };
 
   const navItems = [
     { icon: Home, label: "Home", href: "/" },
+    { icon: Briefcase, label: "Experience", href: "#experience" },
     { icon: Book, label: "Projects", href: "#projects" },
     { icon: Notebook, label: "Blog", href: "/blogs" },
     { icon: Mail, label: "Contact", href: "#contact" },
-  ];
-
-  const socialItems = [
-    { icon: Github, label: "GitHub", href: "https://github.com/shantanuuh" },
-    { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/shantanu-harkulkar-563b38269/" },
   ];
 
   const toggleTheme = () => {
@@ -46,16 +92,30 @@ export default function Navigation() {
   return (
     <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
       <nav className="flex items-center gap-1.5 p-1.5 rounded-full bg-white/40 dark:bg-black/40 backdrop-blur-md backdrop-saturate-150 border border-white/40 dark:border-white/10 shadow-lg dark:shadow-2xl transition-all duration-300">
-        
-        {navItems.map((item) => (
-          <NavItem key={item.label} {...item} />
-        ))}
 
-        <div className="w-px h-5 bg-neutral-200 dark:bg-neutral-800 mx-1" />
+        {navItems.map((item) => {
+          const targetHref = getHref(item.href);
 
-        {socialItems.map((item) => (
-          <NavItem key={item.label} {...item} external />
-        ))}
+          let isActive = false;
+          if (pathname === "/blogs") {
+            isActive = item.href === "/blogs";
+          } else if (isHomePage) {
+            if (activeSection) {
+              isActive = item.href === `#${activeSection}`;
+            } else {
+              isActive = item.href === "/";
+            }
+          }
+
+          return (
+            <NavItem
+              key={item.label}
+              {...item}
+              href={targetHref}
+              isActive={isActive}
+            />
+          );
+        })}
 
         <div className="w-px h-5 bg-neutral-200 dark:bg-neutral-800 mx-1" />
 
@@ -88,10 +148,25 @@ export default function Navigation() {
   );
 }
 
-function NavItem({ icon: Icon, label, href, external }: { icon: any, label: string, href: string, external?: boolean }) {
-  const content = (
-    <div className="group relative">
-      <div className="flex items-center justify-center w-10 h-10 rounded-full border border-transparent dark:border-white/5 text-neutral-600 dark:text-neutral-400 transition-all duration-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/10 hover:border-neutral-200 dark:hover:border-white/10 hover:scale-105">
+function NavItem({
+  icon: Icon,
+  label,
+  href,
+  isActive
+}: {
+  icon: any;
+  label: string;
+  href: string;
+  isActive?: boolean;
+}) {
+  return (
+    <Link href={href} className="group relative block">
+      <div
+        className={`flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 hover:scale-105 ${isActive
+          ? "bg-neutral-100 dark:bg-white/15 border-neutral-300 dark:border-white/20 text-neutral-900 dark:text-white font-medium shadow-sm"
+          : "border-transparent dark:border-white/5 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/10 hover:border-neutral-200 dark:hover:border-white/10"
+          }`}
+      >
         <Icon className="w-4 h-4" />
       </div>
       <div className="absolute top-full mt-3 left-1/2 -translate-x-1/2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 -translate-y-2 group-hover:translate-y-0 pointer-events-none">
@@ -100,16 +175,6 @@ function NavItem({ icon: Icon, label, href, external }: { icon: any, label: stri
           <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-neutral-900 dark:bg-neutral-100 rotate-45" />
         </div>
       </div>
-    </div>
+    </Link>
   );
-
-  if (external) {
-    return (
-      <a href={href} target="_blank" rel="noopener noreferrer">
-        {content}
-      </a>
-    );
-  }
-
-  return <Link href={href}>{content}</Link>;
 }

@@ -6,6 +6,7 @@ import { X } from "lucide-react";
 
 export default function Home() {
     const [isPhotoOpen, setIsPhotoOpen] = useState(false);
+    const [isExpExpanded, setIsExpExpanded] = useState(false);
 
     return (
         <main className="max-w-3xl mx-auto px-4 sm:px-6 pb-8 pt-32 sm:pt-40 md:pb-16">
@@ -16,13 +17,13 @@ export default function Home() {
                     {/* Interactive Zoomable Profile Badge Container */}
                     <button
                         onClick={() => setIsPhotoOpen(true)}
-                        className="group relative w-16 h-16 rounded-2xl bg-neutral-200 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 overflow-hidden flex items-center justify-center shadow-inner shrink-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all duration-300 hover:scale-105 active:scale-95"
+                        className="group relative w-16 h-16 rounded-2xl bg-neutral-200 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 overflow-hidden flex items-center justify-center shadow-inner shrink-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-neutral-500/50 transition-all duration-300 hover:scale-105 active:scale-95"
                         title="Click to expand profile photo"
                     >
-                        <img 
-                            src="/myself.png" 
-                            alt="Shantanu Harkulkar" 
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-115" 
+                        <img
+                            src="/myself.png"
+                            alt="Shantanu Harkulkar"
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-115"
                         />
                         <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-[10px] text-white font-medium backdrop-blur-[1px]">
                             🔍
@@ -37,15 +38,15 @@ export default function Home() {
 
                 {/* Mobile & Desktop Clickable Full Photo Modal Lightbox */}
                 {isPhotoOpen && (
-                    <div 
+                    <div
                         className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200"
                         onClick={() => setIsPhotoOpen(false)}
                     >
-                        <div 
+                        <div
                             className="relative max-w-sm w-full bg-white dark:bg-[#121214] border border-neutral-200 dark:border-neutral-800 rounded-3xl p-4 shadow-2xl text-center"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <button 
+                            <button
                                 onClick={() => setIsPhotoOpen(false)}
                                 className="absolute top-3 right-3 p-1.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
                             >
@@ -55,7 +56,7 @@ export default function Home() {
                             <div className="w-64 h-64 sm:w-72 sm:h-72 mx-auto rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 shadow-md mb-3 mt-2">
                                 <img src="/myself.png" alt="Shantanu Harkulkar Full View" className="w-full h-full object-cover" />
                             </div>
-                            
+
                             <h3 className="text-base font-bold text-neutral-900 dark:text-white">Shantanu Harkulkar</h3>
                             <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">Gen AI & Full-Stack Developer • Mumbai, India</p>
                         </div>
@@ -63,7 +64,7 @@ export default function Home() {
                 )}
 
                 <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed max-w-2xl">
-                    M.Sc. Computer Science graduate specializing in Retrieval-Augmented Generation (RAG) pipelines, LLM agent orchestration, and automated workflow systems. Based in Mumbai, India.
+                    M.Sc. Computer Science graduate building RAG-based chatbots, n8n automation workflows, and web apps. Mumbai, India.
                 </p>
 
                 {/* Contact Badges with Hover Image Previews */}
@@ -117,6 +118,104 @@ export default function Home() {
 
             <hr className="border-neutral-200 dark:border-neutral-800 mb-16" />
 
+            {/* Experience Section */}
+            <section id="experience" className="mb-16 scroll-mt-32">
+                <div className="text-center mb-10">
+                    <span className="text-[10px] uppercase tracking-widest bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 px-3 py-1 rounded-full font-semibold border border-neutral-300 dark:border-neutral-700">
+                        Experience
+                    </span>
+                    <h2 className="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mt-3">
+                        Work Experience
+                    </h2>
+                    <p className="text-xs text-neutral-700 dark:text-neutral-400 mt-1">
+                        My professional background and roles.
+                    </p>
+                </div>
+
+                {/* Single Outer Border Card Container */}
+                <div
+                    onClick={() => setIsExpExpanded(!isExpExpanded)}
+                    className="group p-5 rounded-2xl bg-white dark:bg-[#121214] border border-neutral-200 dark:border-neutral-800 shadow-sm hover:border-neutral-300 dark:hover:border-neutral-700 cursor-pointer transition-all duration-300 select-none"
+                >
+                    {/* Header Row */}
+                    <div className="flex items-start justify-between gap-3">
+                        <div className="flex-1">
+                            <div className="flex items-center gap-2">
+                                <h3 className="text-sm font-bold text-neutral-900 dark:text-white group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors">
+                                    Generative AI Intern
+                                </h3>
+                                <svg
+                                    className={`w-4 h-4 text-neutral-400 transition-transform duration-300 ease-in-out ${isExpExpanded
+                                        ? "rotate-180 text-neutral-700 dark:text-neutral-200"
+                                        : ""
+                                        }`}
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M19 9l-7 7-7-7"
+                                    />
+                                </svg>
+                            </div>
+
+                            {/* Clickable Volosist.com Link */}
+                            <div className="mt-0.5">
+                                <a
+                                    href="https://volosist.com"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="text-xs font-semibold text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:underline inline-flex items-center gap-0.5 transition-colors"
+                                >
+                                    Volosist.com ↗
+                                </a>
+                            </div>
+                        </div>
+
+                        <span className="font-mono text-[10px] text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-900 px-2.5 py-1 rounded-md border border-neutral-200 dark:border-neutral-800 shrink-0">
+                            Dec 2025 – Mar 2026
+                        </span>
+                    </div>
+
+                    {/* Expandable Content Container */}
+                    <div
+                        className={`grid transition-all duration-500 ease-in-out overflow-hidden ${isExpExpanded
+                            ? "grid-rows-[1fr] opacity-100 mt-4 pt-4 border-t border-neutral-200 dark:border-neutral-800"
+                            : "grid-rows-[0fr] opacity-0 group-hover:grid-rows-[1fr] group-hover:opacity-100 group-hover:mt-4 group-hover:pt-4 group-hover:border-t group-hover:border-neutral-200 dark:group-hover:border-neutral-800"
+                            }`}
+                    >
+                        <div className="overflow-hidden">
+                            <ul className="text-xs text-neutral-700 dark:text-neutral-400 space-y-2.5 list-disc list-outside ml-3.5 marker:text-neutral-400 dark:marker:text-neutral-500 leading-relaxed">
+                                <li>
+                                    Architected end-to-end WhatsApp automation workflows using Meta
+                                    Cloud API and n8n webhooks.
+                                </li>
+                                <li>
+                                    Developed statica.in, an e-commerce platform featuring a custom-built
+                                    PHP chatbot plugin.
+                                </li>
+                                <li>
+                                    Engineered Retrieval-Augmented Generation (RAG) AI agents for
+                                    intelligent customer support.
+                                </li>
+                                <li>
+                                    Configured secure SMTP email automation systems for dynamic newsletter
+                                    and campaign workflows.
+                                </li>
+                                <li>
+                                    Implemented on-page and off-page SEO strategies, significantly
+                                    improving search visibility.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Projects Section */}
             <section id="projects" className="mb-16 scroll-mt-32">
                 <div className="text-center mb-10">
@@ -130,10 +229,10 @@ export default function Home() {
                     <div className="group p-5 rounded-2xl bg-white dark:bg-[#121214] border border-neutral-200 dark:border-neutral-800 shadow-sm hover:shadow-md hover:border-neutral-400 dark:hover:border-neutral-600 transition-all flex flex-col justify-between">
                         <div>
                             <div className="relative h-36 rounded-xl bg-neutral-100 dark:bg-neutral-900 mb-4 border border-neutral-200 dark:border-neutral-800 overflow-hidden group/img">
-                                <img 
-                                    src="/whatsapp-preview.png" 
-                                    alt="WhatsApp AI Automation Preview" 
-                                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover/img:scale-105" 
+                                <img
+                                    src="/whatsapp-preview.png"
+                                    alt="WhatsApp AI Automation Preview"
+                                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover/img:scale-105"
                                 />
                                 <div className="absolute top-2 left-2 px-2.5 py-1 rounded-full bg-neutral-900/80 backdrop-blur-md border border-white/20 text-[10px] font-semibold text-white flex items-center gap-1.5 shadow-sm">
                                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -154,7 +253,7 @@ export default function Home() {
                                 <span className="text-[10px] bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-400 px-2.5 py-1 rounded-md border border-neutral-200 dark:border-neutral-800">n8n</span>
                                 <span className="text-[10px] bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-400 px-2.5 py-1 rounded-md border border-neutral-200 dark:border-neutral-800">Node.js</span>
                             </div>
-                            <Link href="/blogs" className="text-xs font-semibold text-yellow-600 dark:text-[#FFF176] hover:underline inline-flex items-center gap-1">
+                            <Link href="/blogs" className="text-xs font-semibold text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:underline inline-flex items-center gap-1 transition-colors">
                                 <span>Read Article (Coming Soon)</span> ↗
                             </Link>
                         </div>
@@ -164,10 +263,10 @@ export default function Home() {
                     <div className="group p-5 rounded-2xl bg-white dark:bg-[#121214] border border-neutral-200 dark:border-neutral-800 shadow-sm hover:shadow-md hover:border-neutral-400 dark:hover:border-neutral-600 transition-all flex flex-col justify-between">
                         <div>
                             <div className="relative h-36 rounded-xl bg-neutral-100 dark:bg-neutral-900 mb-4 border border-neutral-200 dark:border-neutral-800 overflow-hidden group/img">
-                                <img 
-                                    src="/statica-preview.png" 
-                                    alt="Statica.in Official Preview" 
-                                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover/img:scale-105" 
+                                <img
+                                    src="/statica-preview.png"
+                                    alt="Statica.in Official Preview"
+                                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover/img:scale-105"
                                 />
                                 <div className="absolute top-2 left-2 px-2.5 py-1 rounded-full bg-neutral-900/80 backdrop-blur-md border border-white/20 text-[10px] font-semibold text-white flex items-center gap-1.5 shadow-sm">
                                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -188,7 +287,7 @@ export default function Home() {
                                 <span className="text-[10px] bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-400 px-2.5 py-1 rounded-md border border-neutral-200 dark:border-neutral-800">PHP</span>
                                 <span className="text-[10px] bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-400 px-2.5 py-1 rounded-md border border-neutral-200 dark:border-neutral-800">n8n</span>
                             </div>
-                            <a href="https://statica.in" target="_blank" className="text-xs font-semibold text-yellow-600 dark:text-[#FFF176] hover:underline inline-flex items-center gap-1" rel="noreferrer">
+                            <a href="https://statica.in" target="_blank" className="text-xs font-semibold text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:underline inline-flex items-center gap-1 transition-colors" rel="noreferrer">
                                 <span>Live Site</span> ↗
                             </a>
                         </div>
@@ -196,7 +295,7 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Technical Skills Section (With Clean Steel Shine Inner Glows) */}
+            {/* Technical Skills Section */}
             <section id="skills" className="mb-16 scroll-mt-32">
                 <div className="text-center mb-10">
                     <span className="text-[10px] uppercase tracking-widest bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 px-3 py-1 rounded-full font-semibold">Skills</span>
@@ -207,7 +306,7 @@ export default function Home() {
                 {/* Outer wrapper card */}
                 <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#121214] border border-neutral-200 dark:border-neutral-800 shadow-sm space-y-4">
 
-                    {/* Inner Category 1 with Steel Shine */}
+                    {/* Inner Category 1 */}
                     <div className="steel-shine-inner-glow">
                         <div className="steel-shine-content p-4">
                             <h3 className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-500 mb-3">AI Systems & Automation</h3>
@@ -221,7 +320,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    {/* Inner Category 2 with Steel Shine */}
+                    {/* Inner Category 2 */}
                     <div className="steel-shine-inner-glow">
                         <div className="steel-shine-content p-4">
                             <h3 className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-500 mb-3">Languages & Core Frameworks</h3>
@@ -235,7 +334,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    {/* Inner Category 3 with Steel Shine */}
+                    {/* Inner Category 3 */}
                     <div className="steel-shine-inner-glow">
                         <div className="steel-shine-content p-4">
                             <h3 className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-500 mb-3">Vector Stores & Data</h3>
@@ -250,7 +349,7 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Academic Background Section (With Clean Steel Shine Inner Glows) */}
+            {/* Academic Background Section */}
             <section id="education" className="mb-16 scroll-mt-32">
                 <div className="text-center mb-10">
                     <span className="text-[10px] uppercase tracking-widest bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 px-3 py-1 rounded-full font-semibold">Education</span>
@@ -261,7 +360,7 @@ export default function Home() {
                 {/* Outer wrapper card */}
                 <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#121214] border border-neutral-200 dark:border-neutral-800 shadow-sm space-y-4">
 
-                    {/* Inner Degree 1 with Steel Shine */}
+                    {/* Inner Degree 1 */}
                     <div className="steel-shine-inner-glow">
                         <div className="steel-shine-content p-4 flex flex-col sm:flex-row justify-between sm:items-center gap-2">
                             <div>
@@ -272,7 +371,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    {/* Inner Degree 2 with Steel Shine */}
+                    {/* Inner Degree 2 */}
                     <div className="steel-shine-inner-glow">
                         <div className="steel-shine-content p-4 flex flex-col sm:flex-row justify-between sm:items-center gap-2">
                             <div>
@@ -288,11 +387,8 @@ export default function Home() {
 
             {/* Contact Section */}
             <section id="contact" className="mb-16 scroll-mt-32">
-                {/* Single Steel Shine Card spanning full section width */}
                 <div className="steel-shine-inner-glow">
                     <div className="steel-shine-content p-8 sm:p-10 text-center">
-
-                        {/* Heading & Subtitle inside card */}
                         <h2 className="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-2">
                             Get in Touch
                         </h2>
@@ -300,34 +396,18 @@ export default function Home() {
                             Open to opportunities, collaborations, and conversations.
                         </p>
 
-                        {/* Body text with links */}
                         <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 max-w-lg mx-auto leading-relaxed border-t border-neutral-100 dark:border-neutral-800/80 pt-6">
                             Feel free to reach out — drop me an email at{" "}
                             <a
                                 href="mailto:shantanuharkulkar125@gmail.com"
-                                className="text-yellow-600 dark:text-[#FFF176] font-medium underline underline-offset-4 hover:opacity-80 transition-opacity"
+                                className="text-neutral-900 dark:text-white font-medium underline underline-offset-4 hover:opacity-80 transition-opacity"
                             >
                                 shantanuharkulkar125@gmail.com
                             </a>
-                            {" "}or connect on{" "}
-                            <a
-                                href="https://www.linkedin.com/in/shantanu-harkulkar-563b38269/"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="text-yellow-600 dark:text-[#FFF176] font-medium underline underline-offset-4 hover:opacity-80 transition-opacity"
-                            >
-                                LinkedIn
-                            </a>.
                         </p>
                     </div>
                 </div>
             </section>
-
-            {/* Footer */}
-            <footer className="pt-8 border-t border-neutral-200 dark:border-neutral-800 text-center text-xs text-neutral-600 dark:text-neutral-400">
-                © 2026 Shantanu Harkulkar.
-            </footer>
-
         </main>
     );
 }
