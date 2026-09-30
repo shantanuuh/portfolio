@@ -1,1 +1,11 @@
-{}
+{
+  "name": "Shantanu Harkulkar",
+  "title": "Gen AI, AI Automation & Full-Stack Developer",
+  "description": "M.Sc. Computer Science graduate building RAG-based chatbots, n8n automation workflows, and web apps.",
+  "location": "Mumbai, India",
+  "url": "https://portfolio-umber-seven-31.vercel.app/",
+  "links": {
+    "github": "https://github.com/shantanuuh",
+    "linkedin": "https://www.linkedin.com/in/shantanu-harkulkar-563b38269/"
+  }
+}
