@@ -18,7 +18,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob:",
-      `connect-src 'self'${isDev ? " ws: wss:" : ""}`,
+      `connect-src 'self' https://vitals.vercel-insights.com${isDev ? " ws: wss:" : ""}`,
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",
