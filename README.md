@@ -2,7 +2,7 @@
 
 Personal portfolio of **Shantanu Harkulkar**, a Generative AI and Full-Stack Developer and M.Sc. Computer Science graduate based in Mumbai, India.
 
-**Live site:** https://portfolio-umber-seven-31.vercel.app/
+**Live site:** imshantanu.dev
 
 ## About
 
